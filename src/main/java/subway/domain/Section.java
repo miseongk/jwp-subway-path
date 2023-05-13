@@ -8,11 +8,16 @@ public class Section {
     private final Station end;
     private final Distance distance;
 
-    public Section(Station startStation, Station endStation, Distance distance) {
-        this.start = startStation;
-        this.end = endStation;
+    public Section(final String start, final String end, final int distance) {
+        this(new Station(start), new Station(end), new Distance(distance));
+    }
+
+    public Section(final Station start, final Station end, final Distance distance) {
+        this.start = start;
+        this.end = end;
         this.distance = distance;
     }
+
     public boolean contains(final Station station) {
         return start.equals(station) || end.equals(station);
     }
@@ -69,16 +74,27 @@ public class Section {
                 '}';
     }
 
-
     public Station getStart() {
         return start;
+    }
+
+    public String getStartName() {
+        return start.getName();
     }
 
     public Station getEnd() {
         return end;
     }
 
+    public String getEndName() {
+        return end.getName();
+    }
+
     public Distance getDistance() {
         return distance;
+    }
+
+    public Integer getDistanceValue() {
+        return distance.getValue();
     }
 }
